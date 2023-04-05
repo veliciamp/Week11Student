@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.ubaya.adv160420067week4.R
+import com.ubaya.adv160420067week4.util.loadImage
 import com.ubaya.adv160420067week4.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.fragment_student_detail.*
+import kotlinx.android.synthetic.main.student_list_item.*
+import kotlinx.android.synthetic.main.student_list_item.view.*
 
 
 class StudentDetailFragment : Fragment() {
@@ -43,11 +48,15 @@ class StudentDetailFragment : Fragment() {
             val txtName = view?.findViewById<TextInputEditText>(R.id.txtName)
             val txtDob= view?.findViewById<TextInputEditText>(R.id.txtDob)
             val txtPhone=view?.findViewById<TextInputEditText>(R.id.txtPhone)
+            val image=view?.findViewById<ImageView>(R.id.imageView2)
+
+
 
             txtID?.setText(viewModel.studentsLD.value?.id)
             txtName?.setText(viewModel.studentsLD.value?.name)
             txtDob?.setText(viewModel.studentsLD.value?.dob)
             txtPhone?.setText(viewModel.studentsLD.value?.phone)
+            imageView2.loadImage(viewModel.studentsLD.value?.photoUrl,progressBar2)
         })
     }
 
